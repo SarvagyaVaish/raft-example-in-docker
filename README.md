@@ -1,30 +1,26 @@
-## About The Project
+# About The Project
 
 This repo is a dockerized example of Optical Flow using [RAFT](https://github.com/princeton-vl/RAFT). This is adapted from the LearnOpenCV [blog post](https://learnopencv.com/optical-flow-using-deep-learning-raft/) and [Github repo](https://github.com/spmallick/learnopencv/tree/master/Optical-Flow-Estimation-using-Deep-Learning-RAFT).
 
 I was hoping to very quickly test out RAFT for my use case, but ended up spending a significant amount of time just setting up the environment. If you're in the same boat, I hope this Docker image makes it easy for you.
 
 
-## Usage (abridged)
+# Usage
+
+## Short version
 
 1. Clone this repo
 
 2. Put two images (`frame_1.png`, `frame_2.png`) in the `data` folder
 
 3. Build the Docker image
-    ```sh
-    docker build -t raft-example .
-    ```
 
 4. Run the Docker image and mount the `./data` directory to `/data` in the container
-    ```sh
-    docker run --rm --platform linux/amd64 -v ./data:/data raft-example
-    ```
 
 5. 🎉 Result will be saved in the `data` directory
 
 
-## Usage (detailed)
+## Detailed version with commands
 
 1. Install [Docker](https://docs.docker.com/engine/install/). You can check your installation using
     ```sh
@@ -95,6 +91,3 @@ Don't forget to give the project a star! Thanks again!
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
