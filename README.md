@@ -4,6 +4,7 @@ This repo is a dockerized example of Optical Flow using [RAFT](https://github.co
 
 I was hoping to very quickly test out RAFT for my use case, but ended up spending a significant amount of time just setting up the environment. If you're in the same boat, I hope this Docker image makes it easy for you.
 
+  
 
 # Usage
 
@@ -68,6 +69,7 @@ I was hoping to very quickly test out RAFT for my use case, but ended up spendin
 
     Results are timestamped and saved in the local `./data` directory.
 
+  
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -77,6 +79,7 @@ I was hoping to very quickly test out RAFT for my use case, but ended up spendin
 - [ ] Remove the image naming constraints (`frame_1.png`, ...)
 - [ ] Add ability to process video
 
+  
 
 <!-- CONTRIBUTING -->
 ## Contributing
