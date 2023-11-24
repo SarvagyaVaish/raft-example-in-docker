@@ -22,6 +22,7 @@ RUN ./RAFT/download_models.sh && rm models.zip
 
 # Copy in the inference script
 COPY ./inference.py ./
+COPY ./data /default_data
 
 # Run the interence. The output will show up in the ./data directory
 CMD [ "python", "inference.py" ]

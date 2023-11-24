@@ -77,11 +77,18 @@ def inference(args):
     # change model's mode to evaluation
     model.eval()
 
-	# load and resize the frames
+    # load and resize the frames
     frame_1 = cv2.imread("/data/frame_1.png")
-    frame_1 = cv2.resize(frame_1, (640, 360))
-
     frame_2 = cv2.imread("/data/frame_2.png")
+
+    if not frame_1:
+        print("Error loading from /data/...")
+        print("Loading from from /default_data/...")
+        frame_1 = cv2.imread("/default_data/frame_1.png")
+        frame_2 = cv2.imread("/default_data/frame_2.png")
+
+    # resize for raft
+    frame_1 = cv2.resize(frame_1, (640, 360))
     frame_2 = cv2.resize(frame_2, (640, 360))
 
     # frame preprocessing
