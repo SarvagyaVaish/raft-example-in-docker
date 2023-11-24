@@ -27,12 +27,12 @@ COPY ./inference.py ./
 CMD [ "python", "inference.py" ]
 
 # Build the image using:
-#   docker build -t raft-example
+#   docker build -t raft-example .
 
 # Run the container
 #   Add "-it" to interact with the container
 #   The "-v" mounts the host's relative "./data" directory to the absolute "/data" location
-#  docker run --rm --platform linux/amd64 -v ./data:/data raft-example
+#   docker run --rm --platform linux/amd64 -v ./data:/data raft-example
 
 # You're done! Check out the output in the local "./data" directory.
 # You just ran RAFT int he docker container.
