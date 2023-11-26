@@ -22,18 +22,20 @@ RUN ./RAFT/download_models.sh && rm models.zip
 
 # Copy in the inference script
 COPY ./inference.py ./
+
+# Copy some default data that can be used in case no images are provided in ./data
 COPY ./data /default_data
 
 # Run the interence. The output will show up in the ./data directory
 CMD [ "python", "inference.py" ]
 
+#
+# Usage:
+#
 # Build the image using:
 #   docker build -t raft-example .
-
+#
 # Run the container
 #   Add "-it" to interact with the container
 #   The "-v" mounts the host's relative "./data" directory to the absolute "/data" location
 #   docker run --rm --platform linux/amd64 -v ./data:/data raft-example
-
-# You're done! Check out the output in the local "./data" directory.
-# You just ran RAFT int he docker container.

@@ -98,7 +98,7 @@ def inference(args):
 
     # perform inference
     flow_low, flow_up = model(frame_1, frame_2, iters=args.iters, test_mode=True)
-    vizualize_flow(frame_1, flow_up, counter=0)
+    return vizualize_flow(frame_1, flow_up, counter=0)
 
 
 if __name__ == "__main__":
@@ -113,4 +113,6 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args(["--model=models/raft-sintel.pth"])
-    inference(args)
+    result = inference(args)
+
+    print(f"Optical flow {result}")
