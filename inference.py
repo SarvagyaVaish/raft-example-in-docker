@@ -6,7 +6,8 @@
 import os
 import sys
 import datetime
-sys.path.append('RAFT/core')
+
+sys.path.append("RAFT/core")
 
 from argparse import ArgumentParser
 from collections import OrderedDict
@@ -37,9 +38,10 @@ def vizualize_flow(img, flo, counter):
 
     # concatenate and save
     img_flo = np.concatenate([img, flo], axis=0)
+    if not os.path.exists("/data"):
+        os.makedirs("/data")
     filename = f"/data/output_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.jpg"
-    cv2.imwrite(filename, img_flo)
-    return True
+    return cv2.imwrite(filename, img_flo)
 
 
 def get_cpu_model(model):
@@ -52,13 +54,12 @@ def get_cpu_model(model):
     return new_model
 
 
-
 def inference(args):
     # get the RAFT model
     model = RAFT(args)
 
     # load pretrained weights
-    pretrained_weights = torch.load(args.model, map_location=torch.device('cpu'))
+    pretrained_weights = torch.load(args.model, map_location=torch.device("cpu"))
 
     if torch.cuda.is_available():
         device = "cuda"
@@ -100,16 +101,16 @@ def inference(args):
     vizualize_flow(frame_1, flow_up, counter=0)
 
 
-parser = ArgumentParser()
-parser.add_argument("--model", help="restore checkpoint")
-parser.add_argument("--iters", type=int, default=12)
-parser.add_argument("--video", type=str, default="./videos/car.mp4")
-parser.add_argument("--save", action="store_true", help="save demo frames")
-parser.add_argument("--small", action="store_true", help="use small model")
-parser.add_argument(
-    "--mixed_precision", action="store_true", help="use mixed precision"
-)
+if __name__ == "__main__":
+    parser = ArgumentParser()
+    parser.add_argument("--model", help="restore checkpoint")
+    parser.add_argument("--iters", type=int, default=12)
+    parser.add_argument("--video", type=str, default="./videos/car.mp4")
+    parser.add_argument("--save", action="store_true", help="save demo frames")
+    parser.add_argument("--small", action="store_true", help="use small model")
+    parser.add_argument(
+        "--mixed_precision", action="store_true", help="use mixed precision"
+    )
 
-args = parser.parse_args(['--model=models/raft-sintel.pth'])
-inference(args)
-
+    args = parser.parse_args(["--model=models/raft-sintel.pth"])
+    inference(args)
